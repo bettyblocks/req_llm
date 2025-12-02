@@ -68,7 +68,7 @@ defmodule ReqLLM.Generation do
 
   @spec generate_text(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword()
         ) :: {:ok, Response.t()} | {:error, term()}
   def generate_text(model_spec, messages, opts \\ []) do
@@ -111,7 +111,7 @@ defmodule ReqLLM.Generation do
   """
   @spec generate_text!(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword()
         ) :: String.t() | no_return()
   def generate_text!(model_spec, messages, opts \\ []) do
@@ -143,7 +143,7 @@ defmodule ReqLLM.Generation do
   """
   @spec stream_text(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword()
         ) :: {:ok, ReqLLM.StreamResponse.t()} | {:error, term()}
   def stream_text(model_spec, messages, opts \\ []) do
@@ -170,7 +170,7 @@ defmodule ReqLLM.Generation do
   @deprecated "Use stream_text/3 with StreamResponse instead"
   @spec stream_text!(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword()
         ) :: Enumerable.t() | no_return()
   def stream_text!(_model_spec, _messages, _opts \\ []) do
@@ -229,7 +229,7 @@ defmodule ReqLLM.Generation do
   """
   @spec generate_object(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword() | Zoi.Type.t(),
           keyword()
         ) :: {:ok, Response.t()} | {:error, term()}
@@ -284,7 +284,7 @@ defmodule ReqLLM.Generation do
   """
   @spec generate_object!(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword() | Zoi.Type.t(),
           keyword()
         ) :: map() | no_return()
@@ -442,7 +442,7 @@ defmodule ReqLLM.Generation do
   """
   @spec stream_object(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword() | Zoi.Type.t(),
           keyword()
         ) :: {:ok, ReqLLM.StreamResponse.t()} | {:error, term()}
@@ -496,7 +496,7 @@ defmodule ReqLLM.Generation do
   @deprecated "Use stream_object/4 with StreamResponse instead"
   @spec stream_object!(
           String.t() | {atom(), keyword()} | struct(),
-          String.t() | list(),
+          String.t() | list() | ReqLLM.Context.t(),
           keyword() | Zoi.Type.t(),
           keyword()
         ) :: Enumerable.t() | no_return()
